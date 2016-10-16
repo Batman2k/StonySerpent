@@ -1,0 +1,25 @@
+﻿@model StonySerpent.Core.ViewModels.OrderViewModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+<table style="margin-top: 50px; width: 80%">
+    <tr>
+        <th>Ordernumber</th>
+        <th>Is paid</th>
+        <th>Order</th>
+    </tr>
+    @{
+        foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@Html.ActionLink(order.Id.ToString(),"OrderDetails", new {id = order.Id})</td>
+                <td>@order.IsPaid</td>
+                <td>@order.OrderPlaced</td>
+            </tr>
+        }
+    }
+
+
+</table> 

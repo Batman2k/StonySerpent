@@ -1,0 +1,46 @@
+﻿@model IEnumerable<StonySerpent.Core.Models.Product>
+
+<div class="table-responsive">
+    <table class="table-striped" style="margin-top: 40px; width: 100%">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th style="min-width: 300px;">Description</th>
+            <th style="min-width: 80px;">Price</th>
+            <th style="min-width: 50px;">Stock</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td *style="height: 60px; width: 60px;">
+                    <img style="height: 50px; width: 50px;" src="http://www.custompcreview.com/wp-content/uploads/2016/05/nvidia-geforce-gtx-1080-reference-fe.jpg"/>
+                </td>
+                <th>
+                    <div class="table-head-product-name">
+                        @Html.ActionLink(product.Brand + " " + product.Name, "Details", "Home", new {id = product.Id}, null)
+                    </div>
+                </th>
+                <td>
+                    @product.Description
+                </td>
+                <td >
+                    @product.Price
+                </td>
+                <td>
+                    @product.AmountInStock
+                </td>
+                <td>
+                    <button class="js-cart-add btn @(product.AmountInStock <= 0 ? "btn-danger" : "btn-primary")"
+                            productId="@product.Id"
+                            price="@product.Price">
+                        Add to cart
+                    </button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

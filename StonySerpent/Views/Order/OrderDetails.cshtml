@@ -1,0 +1,24 @@
+﻿@model StonySerpent.Core.ViewModels.OrderViewModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+<table style="margin-top: 50px; width: 80%">
+    <tr>
+        <th>Product</th>
+        <th>Amount</th>
+        <th>Price</th>
+    </tr>
+    @{
+        foreach (var cartProduct in Model.Order.OrdedProducts)
+        {
+            <tr>
+                <td>@Html.ActionLink(cartProduct.ProductId.ToString(), "Details" , "Home", new {id = cartProduct.ProductId}, null)</td>
+                <td>@cartProduct.Amount</td>
+                <td>@cartProduct.Price</td>
+            </tr>
+        }
+    }
+</table> 
+Total price : @Model.Order.TotalPrice

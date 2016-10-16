@@ -1,0 +1,31 @@
+﻿@model StonySerpent.Core.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = @Model.Title;
+}
+<h2>@Model.SearchTerm</h2>
+
+@if (!string.IsNullOrWhiteSpace(Model.SearchTerm))
+{
+    Html.RenderAction("RenderProducts", "Helper", new {Model.Products});
+}
+else
+{
+    <table>
+        <tbody>
+        <tr style="min-height: 300px">
+            <td class="startOffersBox">BILD</td>
+            <td class="startOffersBox">BILD</td>
+        </tr>
+        <tr style="min-height: 300px">
+            <td class="startOffersBox">BILD</td>
+            <td class="startOffersBox">BILD</td>
+        </tr>
+        <tr style="min-height: 300px">
+            <td class="startOffersBox">BILD</td>
+            <td class="startOffersBox">BILD</td>
+        </tr>
+
+        </tbody>
+    </table>
+}

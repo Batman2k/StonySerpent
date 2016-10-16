@@ -1,0 +1,62 @@
+﻿body {
+    padding-bottom: 20px;
+    padding-top: 50px;
+}
+
+/* Set padding to keep content from hitting the edges */
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+
+.dl-horizontal dt { white-space: normal; }
+
+/* Set width on the form input elements since they're 100% wide by default */
+
+input,
+select,
+textarea { max-width: 280px; }
+
+
+/* Bootstrap override*/
+
+.btn-block + .btn-block { margin-top: 0px; }
+
+.btn-category {
+    margin-left: 0px;
+    margin-right: 50px;
+    width: 275px;
+}
+
+.nav-categories {
+    margin-bottom: 600px;
+    margin-top: 15px;
+}
+
+.startOffersBox {
+    min-height: 400px;
+    min-width: 400px;
+    text-align: center;
+}
+
+
+#searchProducts {
+    height: 30px;
+    margin-top: 5%;
+    width: 100px;    
+}
+
+#searchTerm {
+    height: 30px;
+    margin-left: 100px;
+    width: 1200px;
+}
+
+.table-head-product-name {
+   min-height: 50px; min-width: 300px; padding: 10px;
+}

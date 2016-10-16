@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>
+                   <a href=@Url.Action("Cart", "Order") style="width: 80px; height: 80px;">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    </a>
+                </li><
+
+                <li>
+                    @using (Html.BeginForm("Index", "Home"))
+                    {
+                        <div class="form-group">
+                            <div id="searchProducts" class="input-group">
+                                @Html.TextBox("searchTerm")
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                            </div>
+                        </div>
+                    }
+                </li>
+
+
+            </ul>
+          
+
+            
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid text-center" style="margin-top: 50px;">
+        <div class="row content">
+       
+                <div class="navbar-left nav-categories col-sm-2">
+                    @{
+                        Html.RenderAction("RenderCategories", "Helper");
+                    }
+                </div>
+                @*<p><a href="#">Link</a>
+                </p>
+                <p><a href="#">Link</a>
+                </p>
+                <p><a href="#">Link</a>
+                </p>*@
+      
+            <div class="col-sm-8">
+                @RenderBody()
+            </div>
+            <div class="col-sm-2 sidenav">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - hhhhhhh</p>
+    </footer>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", false)
+</body>
+</html>

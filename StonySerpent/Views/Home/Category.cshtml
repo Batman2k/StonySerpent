@@ -1,0 +1,21 @@
+﻿@model StonySerpent.Core.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Html.RenderAction("RenderProducts", "Helper", new {Model.Products});
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts
+{
+    <script>
+        $(document)
+            .ready(function() {
+                $(".js-cart-add")
+                    .click(function(e) {
+                        var button = $(e.target);
+                        $.post("/api/cart?productId=" + button.attr("productId") + "&price=" + button.attr("price"));
+                    });
+            });
+    </script>
+}

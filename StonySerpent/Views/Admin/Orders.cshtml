@@ -1,0 +1,64 @@
+﻿@model StonySerpent.Controllers.AdminViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="table-responsive">
+    <table class="table table-hover" style="margin-top: 50px;">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>UserId</th>
+            <th>Total Price</th>
+            <th>DeliveryMethod</th>
+            <th>IsPaid</th>
+            <th>OrderPlaced</th>
+            <th>OrderSent</th>
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.UserId</td>
+                    <td>@order.TotalPrice</td>
+                    <td>@order.DeliveryMethod</td>
+                    <td>@order.IsPaid</td>
+                    <td>@order.OrderPlaced</td>
+                    @if (order.OrderSent == null)
+                    {
+                        <td class="js-send-order">
+                            <button class="btn btn-default" orderId="@order.Id">Send</button>
+                        </td>
+                    }
+                    else
+                    {
+                        <td >@order.OrderSent</td>
+                    }
+
+                </tr>
+            }
+        }
+
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document)
+            .ready(function() {
+                $(".js-send-order")
+                    .click(function(e) {
+                        var button = $(e.target);
+                        $.post("/api/admin?orderid=" + button.attr("orderId"))
+                            .done(function() { button.removeAttr("btn-default").addClass("btn-danger").text("Sent") });
+                    });
+            });
+
+    </script>
+}

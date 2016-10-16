@@ -1,0 +1,59 @@
+﻿@model StonySerpent.Core.Models.CustomerInformation
+
+@{
+    ViewBag.Title = "title";
+}
+
+@using (Html.BeginForm("CustomerInfo", "Order"))
+{
+
+    @Html.AntiForgeryToken()
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.SocialSecurityNumber)
+        @Html.TextBoxFor(m => m.SocialSecurityNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SocialSecurityNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StreetAddress)
+        @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.StreetAddress)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ZipCode)
+        @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ZipCode)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.City)
+        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.City)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneHomeNumber)
+        @Html.TextBoxFor(m => m.PhoneHomeNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PhoneHomeNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneCellNumber)
+        @Html.TextBoxFor(m => m.PhoneCellNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PhoneCellNumber)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

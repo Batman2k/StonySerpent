@@ -1,0 +1,6 @@
+﻿@model IEnumerable<StonySerpent.Core.Models.ProductCategory>
+
+@foreach (var productCategory in Model)
+{
+    <a type="button" class="btn btn-default btn-block btn-category" href="@Url.Action("Category","Home" , new {category = productCategory.Category})">@productCategory.Category</a>
+}

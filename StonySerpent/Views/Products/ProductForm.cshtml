@@ -1,0 +1,59 @@
+﻿@model StonySerpent.Core.ViewModels.ProductFormViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm(Model.Title, "Products"))
+{
+
+@Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Brand)
+        @Html.TextBoxFor(m => m.Brand, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Brand)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Price)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description)
+        @Html.TextBoxFor(m => m.Description, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.SerialNumber)
+        @Html.TextBoxFor(m => m.SerialNumber, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.SerialNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AmountInStock)
+        @Html.TextBoxFor(m => m.AmountInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.AmountInStock)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductCategoryId)
+        @Html.DropDownListFor(m => m.ProductCategoryId, new SelectList(Model.ProductCategories, "Id", "Category"), "", new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.ProductCategoryId)
+    </div>
+
+<button type="submit" class="btn btn-primary">Save</button>
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

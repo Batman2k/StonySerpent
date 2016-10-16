@@ -1,0 +1,102 @@
+﻿@model StonySerpent.Core.ViewModels.OrderViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<table class="table-striped" style=" margin-top: 40px;">
+    <thead>
+        <tr>
+            <th></th>
+            <th> Pris</th>
+            <th>Namn</th>
+            <th></th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.CartProducts)
+        {
+            <tr>
+                <td style="min-width: 60px;">Bild</td>
+                <th>
+                    <div style="min-width: 300px; min-height: 50px">
+                        @product.Price
+                    </div>
+                    <div style="min-width: 200px">
+                    </div>
+                </th>
+
+                <td style="min-width: 400px">
+                </td>
+                <td style="min-width: 70px">
+                    <p style="margin-left: 50%">
+                        Amount:
+                        @using (Html.BeginForm())
+                        {
+                            @Html.Hidden("ProductId", product.ProductId)
+                            @Html.Hidden("Price", product.Price)
+                            @Html.TextBox("Amount", product.Amount.ToString())
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        }
+                    </p>
+
+                </td>
+                <td>
+                 
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="product-box  col-md-12">
+
+    @{
+        foreach (var cartProduct in Model.CartProducts)
+        {
+            <div class="product-listing">
+                @Html.ActionLink("product name ~", "Details", "Home", new { id = cartProduct.ProductId }, null)
+
+                <p style="margin-left: 50%">
+                    Amount:
+                    @using (Html.BeginForm())
+                    {
+                        @Html.Hidden("ProductId",cartProduct.ProductId)
+                        @Html.Hidden("Price", cartProduct.Price)
+                        @Html.TextBox("amount", cartProduct.Amount.ToString())
+                        
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    }
+                </p>
+
+                <div>
+                </div>
+            </div>
+            <hr>
+        }
+    }
+</div>*@
